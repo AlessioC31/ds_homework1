@@ -30,7 +30,7 @@ XML basic example:
 During recent years XML has been criticized mainly for its verbosity. For this reason JSON replaced XML as the de-facto standard format to use in intercommunication systems.
 
 ## JSON
-**JavaScript Object Notation** is a human-readable data interchange format. It consists of key-value pairs and array data types. It is derived by JavaScript programming language but nowadays the majority of programming language supports JSON via its API. Every value is typed and supported types are:
+**JavaScript Object Notation** is a human-readable data interchange format. It consists of key-value pairs and array data types. It is derived by JavaScript programming language but nowadays the majority of programming language supports JSON via their APIs. Every value is typed and supported types are:
 
 * number
 * string
@@ -59,7 +59,7 @@ JSON basic example:
 ```
 
 ## Protocol Buffers
-**Protocol Buffers** is a language agnostic method of serializing structured data. It was developed and internally used by Google since 2001. In 2008 Google made it open source. It is based on an Interface Description Language (the .proto file) and a tool (protoc) which is used to generate source code for different programming languages that enables the usage of Protocol Buffers via defined API. Protocol Buffers is a binary format, so it is not human-readable and not self-describing, but it uses way less data than the JSON and XML.
+**Protocol Buffers** is a language agnostic method of serializing structured data. It was developed and internally used by Google since 2001. In 2008 Google made it open source. It is based on an Interface Description Language (the .proto file) and a tool (protoc) which is used to generate source code for different programming languages that enables the usage of Protocol Buffers via defined API. Protocol Buffers is a binary format, so it is not human-readable and not self-describing, but it uses way less data than JSON and XML.
 
 Basic .proto example:
 
@@ -193,7 +193,7 @@ book := &pb.Book{
 }
 ```
 
-In order to use also XML and JSON marshalling formats Go structs are defined with the same structure as the `.proto` file, definitions can be found in `server/structs.go` but they are also reported here:
+In order to use also XML and JSON marshalling formats, Go structs are defined with the same structure as the `.proto` file. Definitions can be found in `server/structs.go` but they are also reported here:
 
 ```go
 package main
@@ -307,10 +307,10 @@ Visual representation:
 
 As we can see Protobuf leads to smaller payloads than both JSON and XML.
 
-Tiny-size payloads: protobuf uses 41% of data used by JSON and 24% of data used by XML.
+Tiny-size payloads: protobuf uses 59% less space than JSON and 76% less space than XML.
 
-Medium-size payloads: protobuf uses 29% of data used by JSON and 18% of data used by XML.
+Medium-size payloads: protobuf uses 71% less space than JSON and 82% less space than XML.
 
-Large-size payloads: protobuf uses 27% of data used by JSON and 16% of data used by XML.
+Large-size payloads: protobuf uses 73% less space than JSON and 84% less space than XML.
 
 For this and other reasons (such as: [performance benchmark json vs protobuf](https://auth0.com/blog/beating-json-performance-with-protobuf/#:~:text=Protobuf%20messages%20were%209%25%20smaller,available%20to%20the%20JavaScript%20code.&text=On%20these%20situations%2C%20Protobuf%20performs,available%20to%20the%20JavaScript%20code.)) Protocol Buffers is gaining popularity among IT communities. It is also at the core of [gRPC](https://grpc.io/): an RPC framework developed by Google which exploits Protobuf's performance (and other technologies like HTTP2) to provide a high-performance communication channel. Given its speed it is mainly used as a communication protocol between microservices deployed at large scale.
