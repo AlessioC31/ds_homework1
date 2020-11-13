@@ -1,0 +1,44 @@
+syntax = "proto3";
+package main;
+
+option go_package = ".;librarypb";
+
+message Author {
+    string name = 1;
+    string surname = 2;
+}
+
+message Publisher {
+    string name = 1;
+}
+
+message Date {
+    uint32 day = 1;
+    uint32 month = 2;
+    uint32 year = 3;
+}
+
+message Time {
+    uint32 hours = 1;
+    uint32 minutes = 2;
+}
+
+message Book {
+    repeated Author authors = 1;
+    Publisher publisher = 2;
+    Date date = 3;
+    uint32 pages = 4;
+
+    enum BookState {
+        AVAILABLE = 0;
+        NOT_AVAILABLE = 1;
+    }
+
+    BookState state = 5;
+}
+
+message Library {
+    repeated Book books = 1;
+    Time opening_time = 2;
+    Time closing_time = 3;
+}
